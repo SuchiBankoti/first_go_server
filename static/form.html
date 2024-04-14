@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form>
+        <label>name</label>
+        <input></input>
+    </form>
+    <br/>
+    <button onclick="getData()">get data</button>
+
+    <table border="1">
+        <thead>
+            <tr>
+
+                <th>name</th>
+                <th>age</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="name" style="height: 50px;"></td>
+                <td id="age" style="height: 50px;"></td>
+            </tr>
+        </tbody>
+    </table>
+    <script>
+        const name=document.getElementById('name')
+        const age=document.getElementById('age')
+        async function getData(){
+            const res=await fetch("/form/data")
+            const data=await res.json()
+            console.log(data)
+            name.textContent=data.Name
+            age.textContent=data.Age
+        }
+    </script>
+</body>
+</html>
